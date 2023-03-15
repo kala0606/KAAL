@@ -15,8 +15,8 @@ class Boid {
       this.j = j;
 
       this.rs = R.random_num(0,1);
-      this.rsv = R.random_int(0.5, 2);
-      this.rsvb = R.random_int(10, 100);
+      this.rsv = R.random_num(1, 2);
+      this.rsvb = R.random_num(10, 100);
       // this.minutes = minute();
     }
   
