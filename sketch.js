@@ -83,7 +83,6 @@ function setup() {
   // alignSlider = createSlider(0, 2, 1.5, 0.1);
   // cohesionSlider = createSlider(0, 2, 1, 0.1);
   // separationSlider = createSlider(0, 2, 2, 0.1);
-  smooth();
 
   rectMode(CENTER)
   // scale(0.8)
@@ -121,6 +120,7 @@ function setup() {
 function draw() {
   // bcol.setAlpha(1)
   background(bcol);
+  smooth();
 
   ambientLight(100);
   directionalLight(255, 255, 255, 0, 0, -DIM*2);
