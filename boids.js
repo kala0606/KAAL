@@ -145,7 +145,7 @@ class Boid {
       var r = map(noise(this.position.x/10,this.position.y/10, frameCount/300), 0, 1, -PI/20, PI/20)
       rotate(r)
   
-      rect(0, 0, 0.5*M + noise(this.j/10 + this.position.x/100)*fsw*M, HEIGHT/hr-15*M);
+      rect(0, 0, 1*M + noise(this.j/10 + this.position.x/100)*fsw*M, HEIGHT/hr-15*M);
       pop()
 
       // for(var i = 0; i < 10; i++){
