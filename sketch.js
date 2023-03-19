@@ -70,11 +70,16 @@ var DIM = Math.min(WIDTH, HEIGHT);
 var M = DIM / DEFAULT_SIZE;
 
 var rows = [];
-var hr, mint;
+var hr, mint, sc;
 let bcol, scol;
 var refr = true;
 var refr2 = true;
-let alignSlider, cohesionSlider, separationSlider;
+let lastMinute = -1;
+let lastSecond = -1;
+
+let hours
+let minutes;
+let seconds;
 
 let r1, r2;
 
@@ -102,11 +107,14 @@ function setup() {
   r1 = R.random_num(0.1,4);
   r2 = R.random_num(1,8);
 
+  hours = hour();
+  minutes = minute();
+  seconds = second();
+  
+
   setMinute();
   setHour();
-  var currSec = second();
-  var currMin = minute();
-  var currHr = hour();
+  
 
   
   // setInterval(setMinute, (60-currSec)*1000);
@@ -119,7 +127,9 @@ function setup() {
 
 function draw() {
   // bcol.setAlpha(1)
+  
   background(bcol);
+  // background(bcol);
   smooth();
 
   ambientLight(100);
@@ -129,11 +139,42 @@ function draw() {
   scale(0.8)
   translate(-WIDTH/2, -HEIGHT/2)
 
-  
+  // hours = hour();
+  // minutes = minute();
+  // seconds = second();
+  // Increment the seconds variable by 1 every frame
+  // if(frameCount%60==0) seconds++;
 
+  // If the seconds variable reaches 60, increment the minutes variable and reset the seconds variable to 0
+  if (seconds === 60) {
+    minutes++;
+    seconds = 0;
+  }
+
+  // If the minutes variable reaches 60, increment the hours variable and reset the minutes variable to 0
+  if (minutes === 60) {
+    hours++;
+    minutes = 0;
+  }
+
+  // Display the current time as a string
+  let timeString = nf(hours, 2) + ":" + nf(minutes, 2) + ":" + nf(seconds, 2);
+  console.log(timeString); // Print the time string to the console
+  // Your code here..
   
 
   // if(minute() == 0) setHour();
+  if(minutes === 0 && seconds%2 == 0){
+    // noStroke()
+    // let hcol = scol;
+    // fill(hcol)
+    // hcol.setAlpha(!(seconds%2) ? 255 : 0);
+    
+    for( let j = 0; j < hr; j++){
+      
+      rect(WIDTH/2, j*HEIGHT/hr + HEIGHT/hr/2, WIDTH, HEIGHT/hr-15*M);
+    }
+  } 
 
   for(let j = 0; j < hr; j++){
     // for (let i = 0; i < minute(); i++) {
@@ -142,7 +183,7 @@ function draw() {
     // rows[j].setup();
     rows[j].anim();
 
-    print(hour(),";", minute(), ";", second(),";", frameRate())  
+    // print(hour(),";", minute(), ";", second(),";", frameRate())  
   }
 
   // if(minute() ==  0 && second()%2 == 0){
@@ -161,95 +202,107 @@ function draw() {
   //   boid.show();
   // } 
 
-  if(minute() == 0){
-    setInterval(setHour(), 1000*60);
-    setInterval(setMinute(), 1000*60);
+  // if(minute() == 0 && ){
+  //   setTimeout(setHour(), 0);
+  //   // setTimeout(setMinute(), 0);
 
-    print("sethour")
-    // break;
-  }
+  //   print("sethour")
+  //   // break;
+  // }
 
-   if(second() == 0 && frameCount % 60==0){
-    setMinute();
-    print("eureka")
-    // break;
-  }
-
-
-  if(mint == 0){
-    noStroke()
-    fill(scol)
-    scol.setAlpha(!(second()%2) ? 255 : 0);
+  if (minutes === 0 && minutes !== lastMinute) {
+    // Execute the code only if the current minute is 0 and it's a new minute
+    console.log("It's a new hour!");
+    // Your code here...
+    setHour();
     
-    for( let j = 0; j < hr; j++){
-      // fill(bcol)
-      // rect(WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
-     
-      // scol.setAlpha(sin(frameCount/10*j)*255);
-      rect(WIDTH/2, j*HEIGHT/hr + HEIGHT/hr/2, WIDTH, HEIGHT/hr-15*M);
-    }
-  } 
+    // setMinute();
+    
+    // Update the lastMinute variable to avoid executing the code again until the next hour
+    lastMinute = 0;
+  } else if (minutes !== lastMinute) {
+    // Update the lastMinute variable if it's a new minute
+    lastMinute = minutes;
+  }
+
+  //  if(second() == 0 && frameCount % 60==0){
+  //   setMinute();
+  //   print("eureka")
+  //   // break;
+  // }
+
+  if (seconds === 0 && seconds !== lastSecond) {
+    // Execute the code only if the current second is 0 and it's a new second
+    // console.log("It's a new minute!");
+    // Your code here...
+    setMinute();
+    
+    // Update the lastSecond variable to avoid executing the code again until the next minute
+    lastSecond = 0;
+  } else if (seconds !== lastSecond) {
+    // Update the lastSecond variable if it's a new second
+    lastSecond = seconds;
+  }
+
+
+  
 }
 
 function setHour(){
 
   refr2 = true;
+  // hr = hours;
   
-  if(hour()>12) {
-    hr = hour() - 12;
+  if(hours>12) {
+    hr = hours - 12;
     bcol = color(255)
     scol = color(0)
   
   }
-  else if(hour()==12) {
-    hr = hour();
+  else if(hours==12) {
+    hr = hours;
     bcol = color(255)
     scol = color(0)
   
   }
-  else if(hour()==0){
+  else if(hours==0){
     hr = 12;
     bcol = color(0);
     scol = color(0);
   }
   else {
-    hr = hour();
+    hr = hours;
     bcol = color(0)
     scol = color(255)
   
   }
 
-  // hr = 12;
+  
+
+  rows.length = 0
 
   for(let j = 0; j < hr; j++){
     rows.push(new Row(j))
     
   }
 
-  for (let row of rows) {
-    row.setup();
-  }
+  // for (let row of rows) {
+  //   row.setup();
+  // }
 
  
 }
 
 function setMinute(){
-  mint = minute();
   refr = true;
-  // mint = 0;
+  mint = minutes;
 
-  for (let row of rows) {
-    row.addmin();
-  }
-
-  // while(second() < 2)
-  // for(let j = 0; j < hr; j++){
-  //   fill(scol);
-  //   push()
-  //   translate(WIDTH/2, j*HEIGHT/hr);
-  //   rect(0,0, WIDTH, HEIGHT/hr);
-  //   pop()
-  // }
   
+  for (let row of rows) {
+    if(row.flock.length == 59) row.flock.length = 0;
+    else {
+      row.addmin();
+    }
+  }
 
 }

@@ -15,7 +15,7 @@ class Row {
     }
 
     setup(){
-      this.flock = [];
+      // this.flock.length = 0;
       for (let i = 0; i < mint; i++) {
         this.flock.push(new Boid(this.j));
       // }
