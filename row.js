@@ -32,7 +32,7 @@ class Row {
       for (let boid of this.flock) {
         boid.edges();
         // boid.flock(this.flock);
-        if(frameCount%60<40 && frameCount%60>30){
+        if(int(frameCount)%60<40 && int(frameCount)%60>30){
           boid.flock(this.flock);
           boid.update();
         }

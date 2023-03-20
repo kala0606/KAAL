@@ -128,7 +128,7 @@ function setup() {
 function draw() {
   // bcol.setAlpha(1)
   
-  
+  frameRate(60)
   // background(bcol);
   smooth();
 
