@@ -169,7 +169,7 @@ function draw() {
   if(minutes === 0 && seconds%2 == 0){
     // noStroke()
     // let hcol = scol;
-    // fill(hcol)
+    fill(scol)
     // hcol.setAlpha(!(seconds%2) ? 255 : 0);
     
     for( let j = 0; j < hr; j++){
@@ -270,7 +270,7 @@ function setHour(){
   else if(hours==0){
     hr = 12;
     bcol = color(0);
-    scol = color(0);
+    scol = color(255);
   }
   else {
     hr = hours;
