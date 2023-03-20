@@ -142,7 +142,7 @@ class Boid {
       fill(scol);
       push()
       translate(this.position.x, this.j*(HEIGHT/hr) + HEIGHT/hr/2)
-      var r = map(noise(this.position.x/10,this.position.y/10, frameCount/300), 0, 1, -PI/20, PI/20)
+      var r = map(noise(this.position.x/10,this.position.y/10, seconds/300), 0, 1, -PI/20, PI/20)
       rotate(r)
   
       rect(0, 0, 1*M + noise(this.j/10 + this.position.x/100)*fsw*M, HEIGHT/hr-15*M);

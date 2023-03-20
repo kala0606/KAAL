@@ -128,34 +128,36 @@ function setup() {
 function draw() {
   // bcol.setAlpha(1)
   
-  background(bcol);
+  
   // background(bcol);
   smooth();
 
-  ambientLight(100);
-  directionalLight(255, 255, 255, 0, 0, -DIM*2);
+  // ambientLight(100);
+  // directionalLight(255, 255, 255, 0, 0, -DIM*2);
 
   // translate(WIDTH/2, HEIGHT/2)
   scale(0.8)
   translate(-WIDTH/2, -HEIGHT/2)
 
-  // hours = hour();
-  // minutes = minute();
-  // seconds = second();
+  hours = hour();
+  minutes = minute();
+  seconds = second();
+
+  background(bcol);
   // Increment the seconds variable by 1 every frame
   // if(frameCount%60==0) seconds++;
 
   // If the seconds variable reaches 60, increment the minutes variable and reset the seconds variable to 0
-  if (seconds === 60) {
-    minutes++;
-    seconds = 0;
-  }
+  // if (seconds === 60) {
+  //   minutes++;
+  //   seconds = 0;
+  // }
 
-  // If the minutes variable reaches 60, increment the hours variable and reset the minutes variable to 0
-  if (minutes === 60) {
-    hours++;
-    minutes = 0;
-  }
+  // // If the minutes variable reaches 60, increment the hours variable and reset the minutes variable to 0
+  // if (minutes === 60) {
+  //   hours++;
+  //   minutes = 0;
+  // }
 
   // Display the current time as a string
   let timeString = nf(hours, 2) + ":" + nf(minutes, 2) + ":" + nf(seconds, 2);
