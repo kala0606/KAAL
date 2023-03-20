@@ -110,9 +110,9 @@ class Boid {
       // this.acceleration.add(alignment);
       // this.acceleration.add(cohesion);
       // this.acceleration.add(separation);
-      for (let other of boids) {
-        this.x = lerp(this.x, this.position.x, 0.1);
-      }
+      // for (let other of boids) {
+      //   this.x = lerp(this.x, this.position.x, 0.1);
+      // }
     }
   
     update() {
