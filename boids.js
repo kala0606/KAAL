@@ -8,10 +8,10 @@ class Boid {
       this.position = createVector(random(width), 175);
       this.velocity = createVector(0.1,0);
       this.ran_velocity = createVector(5,0);
-      this.velocity.setMag(random(-1, 1));
+      this.velocity.setMag(random(-10, 10));
       this.acceleration = createVector();
       this.maxForce = 0.2;
-      this.maxSpeed = 2;
+      this.maxSpeed = 10;
       this.j = j;
 
       this.rs = R.random_num(0,1);
@@ -110,6 +110,9 @@ class Boid {
       // this.acceleration.add(alignment);
       // this.acceleration.add(cohesion);
       // this.acceleration.add(separation);
+      for (let other of boids) {
+        this.x = lerp(this.x, this.position.x, 0.1);
+      }
     }
   
     update() {
@@ -142,7 +145,7 @@ class Boid {
       fill(scol);
       push()
       translate(this.position.x, this.j*(HEIGHT/hr) + HEIGHT/hr/2)
-      var r = map(noise(this.position.x/10,this.position.y/10, seconds/300), 0, 1, -PI/20, PI/20)
+      var r = map(noise(this.position.x/300,this.position.y/300, seconds/300), 0, 1, -PI/15, PI/15)
       rotate(r)
   
       rect(0, 0, 1*M + noise(this.j/10 + this.position.x/100)*fsw*M, HEIGHT/hr-15*M);
