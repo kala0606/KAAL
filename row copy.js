@@ -35,7 +35,6 @@ class Row {
         if(int(frameCount)%60<40 && int(frameCount)%60>30){
           boid.flock(this.flock);
           boid.update();
-          // boid.velo = averageAmplitude;
         }
         boid.show();
       }  

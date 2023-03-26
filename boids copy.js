@@ -13,7 +13,6 @@ class Boid {
       this.maxForce = 0.2;
       this.maxSpeed = 5*M;
       this.j = j;
-      // this.velo = averageAmplitude;
 
       this.rs = R.random_num(0,1);
       this.rsv = R.random_num(1, 2);
@@ -146,10 +145,10 @@ class Boid {
       fill(scol);
       push()
       translate(this.position.x, this.j*(HEIGHT/hr) + HEIGHT/hr/2)
-      var r = map(noise(this.position.x/(50),this.position.y/(50), seconds/300), 0, 1, -PI/15, PI/15)
+      var r = map(noise(this.position.x/10,this.position.y/10, seconds/300), 0, 1, -PI/15, PI/15)
       rotate(r)
   
-      rect(0, 0, 1*M + noise(this.j/(10*M) + this.position.x/(100*M))*fsw*M, HEIGHT/hr-15*M);
+      rect(0, 0, 1*M + noise(this.j/10 + this.position.x/100)*fsw*M, HEIGHT/hr-15*M);
       pop()
 
       // for(var i = 0; i < 10; i++){
