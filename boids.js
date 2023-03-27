@@ -11,7 +11,7 @@ class Boid {
       this.velocity.setMag(random(-5*M, 5*M));
       this.acceleration = createVector();
       this.maxForce = 0.2;
-      this.maxSpeed = 5*M;
+      this.maxSpeed = 3*M;
       this.j = j;
       // this.velo = averageAmplitude;
 
