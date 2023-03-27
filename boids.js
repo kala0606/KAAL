@@ -8,10 +8,10 @@ class Boid {
       this.position = createVector(random(width), 175);
       this.velocity = createVector(0.1,0);
       this.ran_velocity = createVector(5,0);
-      this.velocity.setMag(random(-5*M, 5*M));
+      this.velocity.setMag(random(-2*M, 2*M));
       this.acceleration = createVector();
       this.maxForce = 0.2;
-      this.maxSpeed = 3*M;
+      this.maxSpeed = 2*M;
       this.j = j;
       // this.velo = averageAmplitude;
 
@@ -149,7 +149,7 @@ class Boid {
       var r = map(noise(this.position.x/(50),this.position.y/(50), seconds/300), 0, 1, -PI/15, PI/15)
       rotate(r)
   
-      rect(0, 0, 1*M + noise(this.j/(10*M) + this.position.x/(100*M))*fsw*M, HEIGHT/hr-15*M);
+      rect(0, 0, 3*M + noise(this.j/(10*M) + this.position.x/(100*M))*fsw*M, HEIGHT/hr-15*M);
       pop()
 
       // for(var i = 0; i < 10; i++){
