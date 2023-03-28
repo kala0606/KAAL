@@ -70,7 +70,7 @@ var DIM = Math.min(WIDTH, HEIGHT);
 var M = DIM / DEFAULT_SIZE;
 
 var rows = [];
-var hr, mint, sc;
+// var hr, mint, sc;
 let bcol, scol;
 var refr = true;
 var refr2 = true;
@@ -139,15 +139,15 @@ function draw() {
   scale(0.8)
   translate(-WIDTH/2, -HEIGHT/2)
 
-  hours = hour();
-  minutes = minute();
-  seconds = second();
+  // hours = hour();
+  // minutes = minute();
+  // seconds = second();
 
   background(bcol);
-  // Increment the seconds variable by 1 every frame
+  // // Increment the seconds variable by 1 every frame
   // if(frameCount%60==0) seconds++;
 
-  // If the seconds variable reaches 60, increment the minutes variable and reset the seconds variable to 0
+  // // If the seconds variable reaches 60, increment the minutes variable and reset the seconds variable to 0
   // if (seconds === 60) {
   //   minutes++;
   //   seconds = 0;
@@ -252,7 +252,7 @@ function draw() {
 
 function setHour(){
 
-  refr2 = true;
+  // refr2 = true;
   // hr = hours;
   
   if(hours>12) {
@@ -281,7 +281,7 @@ function setHour(){
 
   
 
-  rows.length = 0
+  rows = [];
 
   for(let j = 0; j < hr; j++){
     rows.push(new Row(j))
@@ -296,15 +296,26 @@ function setHour(){
 }
 
 function setMinute(){
-  refr = true;
-  mint = minutes;
+  // refr = true;
+  // mint = minutes;
 
   
   for (let row of rows) {
-    if(row.flock.length == 59) row.flock.length = 0;
-    else {
+
+    
+
+    if(minutes != 0) {
+      
+    //   row.setup();
+    //   row.anim();
+    //   print("no")
+    // }
+    // else {
       row.addmin();
+      print("wha")      
     }
+
+    print(row.flock.length)
   }
 
 }

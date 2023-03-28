@@ -15,8 +15,8 @@ class Row {
     }
 
     setup(){
-      // this.flock.length = 0;
-      for (let i = 0; i < mint; i++) {
+      this.flock = [];
+      for (let i = 0; i < minutes; i++) {
         this.flock.push(new Boid(this.j));
       // }
   
@@ -25,7 +25,9 @@ class Row {
     }
 
     addmin(){
+      // if(minute!=0){
       this.flock.push(new Boid(this.j));
+      // }
     }
   
     anim() {
