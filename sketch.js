@@ -139,9 +139,9 @@ function draw() {
   scale(0.8)
   translate(-WIDTH/2, -HEIGHT/2)
 
-  // hours = hour();
-  // minutes = minute();
-  // seconds = second();
+  hours = hour();
+  minutes = minute();
+  seconds = second();
 
   background(bcol);
   // // Increment the seconds variable by 1 every frame
