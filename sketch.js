@@ -312,10 +312,10 @@ function setMinute(){
     // }
     // else {
       row.addmin();
-      print("wha")      
+      // print("wha")      
     }
 
-    print(row.flock.length)
+    // print(row.flock.length)
   }
 
 }
